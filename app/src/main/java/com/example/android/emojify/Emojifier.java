@@ -60,10 +60,8 @@ class Emojifier {
 
         // COMPLETED (2): Iterate through the faces, calling getClassifications() for each face.
         for (int i = 0; i < faces.size(); i++) {
-            Face face = faces.get(i);
-            if(face != null) {
-                getClassifications(face);
-            }
+            Face face = faces.valueAt(i);
+            getClassifications(face);
         }
 
         // Release the detector
@@ -74,7 +72,9 @@ class Emojifier {
     public static void getClassifications(Face face) {
         float leftOpenProb = face.getIsLeftEyeOpenProbability();
         float rightOpenProb = face.getIsLeftEyeOpenProbability();
+        float smilingProb = face.getIsSmilingProbability();
         Log.d(LOG_TAG, "Left eye open probability = " + leftOpenProb);
         Log.d(LOG_TAG, "Right eye open probability = " + rightOpenProb);
+        Log.d(LOG_TAG, "Smiling probability = " + smilingProb);
     }
 }
